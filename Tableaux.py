@@ -209,25 +209,28 @@ def Tableaux(lista_hojas, letrasProposicionales):
 			# print lista
 			literales = obtiene_literales(lista, letrasProposicionales)
 			# print literales
+			hojaConsistente = True
 			for l in literales: # Verificamos que no hayan pares complementarios en la hoja
 				if '-' not in l: # Verifica si el literal es positivo
 					if '-' + l in literales: # Verifica si el complementario esta en la hoja
-						# print "La hoja " + imprime_hoja(hoja) +  " es inconsistente!"
+						print "La hoja " + imprime_hoja(hoja) +  " es inconsistente!"
 						lista_hojas.remove(hoja)
-						lista_hojas.append('x') # Marca la hoja como inconsistente con una 'x'
+						# lista_hojas.append('x') # Marca la hoja como inconsistente con una 'x'
+						hojaConsistente = False
 						break
 
-				elif l[1] in literales: # Verifica si el complementario esta en la hoja
-						# print "La hoja " + imprime_hoja(hoja) +  " es inconsistente!"
+				elif l[1:] in literales: # Verifica si el complementario esta en la hoja
+						print "La hoja " + imprime_hoja(hoja) +  " es inconsistente!"
 						lista_hojas.remove(hoja)
-						lista_hojas.append('x') # Marca la hoja como inconsistente con una 'x'
+						# lista_hojas.append('x') # Marca la hoja como inconsistente con una 'x'
+						hojaConsistente = False
 						break
-				else:
-					# print "La hoja " + imprime_hoja(hoja) +  " es consistente :)"
-					interpretaciones.append(hoja) # Guarda la interpretacion que satisface la raiz
-					lista_hojas.remove(hoja)
-					lista_hojas.append('o') # Marca la hoja como consistente con una 'o'
-					break
+
+			if hojaConsistente: # Se recorrieron todos los literales y no esta el complementario
+				print "La hoja " + imprime_hoja(hoja) +  " es consistente :)"
+				interpretaciones.append(hoja) # Guarda la interpretacion que satisface la raiz
+				lista_hojas.remove(hoja)
+				# lista_hojas.append('o') # Marca la hoja como consistente con una 'o'
 
 	# Dice si la raiz es inconsistente
 	if 'o' in lista_hojas:
