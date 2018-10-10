@@ -1,5 +1,9 @@
 #-*-coding: utf-8-*-
 
+##############################################################################
+# Definicion de objeto tree y funciones
+##############################################################################
+
 class Tree(object):
 	def __init__(self, label, left, right):
 		self.left = left
@@ -81,7 +85,17 @@ def obtiene_literales(cadena, letrasProposicionales):
 
 def Tableaux(lista_hojas, letrasProposicionales):
 
-	# print "Trabajando con: ", imprime_tableau(lista_hojas)
+	# Algoritmo de creacion de tableau a partir de lista_hojas
+
+	# Imput: - lista_hojas: lista de lista de formulas
+	#			(una hoja es una lista de formulas)
+	#		 - letrasProposicionales: lista de letras proposicionales del lenguaje
+
+	# Output: - String: Satisfacible/Insatisfacible
+	# 		  - interpretaciones: lista de listas de literales que hacen verdadera
+	#			la lista_hojas
+
+	print "Trabajando con: ", imprime_tableau(lista_hojas)
 
 	marcas = ['x', 'o']
 	interpretaciones = [] # Lista para guardar interpretaciones que satisfacen la raiz
@@ -91,9 +105,10 @@ def Tableaux(lista_hojas, letrasProposicionales):
 		# Hay hojas sin marcar
 		# Crea la lista de hojas sin marcar
 		hojas_no_marcadas = [x for x in lista_hojas if x not in marcas]
+		print u"Cantidad de hojas sin marcar: ", len(hojas_no_marcadas)
 		# Selecciona una hoja no marcada
 		hoja = choice(hojas_no_marcadas)
-		# print "Trabajando con hoja: ", imprime_hoja(hoja)
+		print "Trabajando con hoja: ", imprime_hoja(hoja)
 
 		# Busca formulas que no son literales
 		formulas_no_literales = []
@@ -112,6 +127,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 
 		if formulas_no_literales != []: # Verifica si hay formulas que no son literales
 			# Hay formulas que no son literales
+			# print "Hay formulas que no son literales"
 			# Selecciona una formula no literal
 			f = choice(formulas_no_literales)
 			if f.label == 'Y':
@@ -186,29 +202,33 @@ def Tableaux(lista_hojas, letrasProposicionales):
 					lista_hojas.append(S2) # Agrega nueva hoja con no B2
 
 		else: # No hay formulas que no sean literales
+			# print "La hoja contiene solo literales!"
 			lista = list(imprime_hoja(hoja))
 			# print lista
 			literales = obtiene_literales(lista, letrasProposicionales)
 			# print literales
-			# print "La hoja contiene solo literales!"
+			hojaConsistente = True
 			for l in literales: # Verificamos que no hayan pares complementarios en la hoja
 				if '-' not in l: # Verifica si el literal es positivo
 					if '-' + l in literales: # Verifica si el complementario esta en la hoja
+						print "La hoja " + imprime_hoja(hoja) +  " es inconsistente!"
 						lista_hojas.remove(hoja)
-						lista_hojas.append('x') # Marca la hoja como inconsistente con una 'x'
-						# print "La hoja " + imprime_hoja(hoja) +  " es inconsistente!"
+						# lista_hojas.append('x') # Marca la hoja como inconsistente con una 'x'
+						hojaConsistente = False
 						break
 
-				elif l[1] in literales: # Verifica si el complementario esta en la hoja
+				elif l[1:] in literales: # Verifica si el complementario esta en la hoja
+						print "La hoja " + imprime_hoja(hoja) +  " es inconsistente!"
 						lista_hojas.remove(hoja)
-						lista_hojas.append('x') # Marca la hoja como inconsistente con una 'x'
-						# print "La hoja " + imprime_hoja(hoja) +  " es inconsistente!"
+						# lista_hojas.append('x') # Marca la hoja como inconsistente con una 'x'
+						hojaConsistente = False
 						break
-				else:
-					interpretaciones.append(hoja) # Guarda la interpretacion que satisface la raiz
-					lista_hojas.remove(hoja)
-					lista_hojas.append('o') # Marca la hoja como consistente con una 'o'
-					# print "La hoja " + imprime_hoja(hoja) +  " es consistente :)"
+
+			if hojaConsistente: # Se recorrieron todos los literales y no esta el complementario
+				print "La hoja " + imprime_hoja(hoja) +  " es consistente :)"
+				interpretaciones.append(hoja) # Guarda la interpretacion que satisface la raiz
+				lista_hojas.remove(hoja)
+				# lista_hojas.append('o') # Marca la hoja como consistente con una 'o'
 
 	# Dice si la raiz es inconsistente
 	if 'o' in lista_hojas:
@@ -216,10 +236,14 @@ def Tableaux(lista_hojas, letrasProposicionales):
 		# Imprime las interpretaciones que satisfacen
 		for i in interpretaciones:
 			print([Inorder(l) for l in i])
-		return "Satisfacible"
+		return "Satisfacible", interpretaciones
 	else:
 		print(u"La lista de fórmulas dada es insatisfacible!")
-		return "Insatisfacible"
+		return "Insatisfacible", None
+
+##############################################################################
+# Fin definicion de objeto tree y funciones
+##############################################################################
 
 from random import choice
 
