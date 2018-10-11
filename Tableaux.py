@@ -240,7 +240,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 		# Interpreta como string la lista de interpretaciones
 		INTS = []
 		for i in interpretaciones:
-			aux = [T.Inorder(l) for l in i]
+			aux = [Inorder(l) for l in i]
 			INTS.append(aux)
 			print aux
 
