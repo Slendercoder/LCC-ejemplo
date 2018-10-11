@@ -73,9 +73,13 @@ if OK == 'Satisfacible':
         print "Guardando interpretaciones en archivo..."
         import csv
         archivo = 'tableros_automatico.csv'
+        # Interpreto como string la lista de interpretaciones
+        INTS = []
+        for i in interpretaciones:
+            INTS.append([T.Inorder(l) for l in i])
         with open(archivo, 'w') as output:
             writer = csv.writer(output, lineterminator='\n')
-            writer.writerows(interpretaciones)
+            writer.writerows(INTS)
 
         print "Interpretaciones guardadas  en " + archivo
 
