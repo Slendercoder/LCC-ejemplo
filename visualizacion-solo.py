@@ -12,10 +12,6 @@
 
 # Salida: archivo tablero_%i.png, donde %i es un numero natural
 
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-from matplotlib.offsetbox import AnnotationBbox, OffsetImage
-
 
 def dibujar_tablero(f, n):
     # Visualiza un tablero dada una formula f
@@ -95,3 +91,26 @@ def dibujar_tablero(f, n):
 
     # plt.show()
     fig.savefig("tablero_" + str(n) + ".png")
+
+
+#################
+# importando paquetes para dibujar
+print "Importando paquetes..."
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from matplotlib.offsetbox import AnnotationBbox, OffsetImage
+import csv
+from sys import argv
+print "Listo!"
+
+script, data_archivo = argv
+
+with open(data_archivo) as csv_file:
+    data = csv.reader(csv_file, delimiter=',')
+    contador = 1
+    for l in data:
+        print "Dibujando tablero:", l
+        dibujar_tablero(l, contador)
+        contador += 1
+
+csv_file.close()
