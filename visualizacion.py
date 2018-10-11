@@ -94,4 +94,11 @@ def dibujar_tablero(f, n):
             axes.add_artist(ab)
 
     # plt.show()
-    fig.savefig("tablero_" + str(n) + ".png")
+    d = '/Soluciones'
+    try:
+        os.makedirs(d)
+        print "Creando " + d
+        except OSError:
+            if not os.path.isdir(d):
+                raise
+    fig.savefig("/Imagenes/tablero_" + str(n) + ".png")
