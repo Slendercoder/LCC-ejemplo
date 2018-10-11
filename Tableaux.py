@@ -238,11 +238,12 @@ def Tableaux(lista_hojas, letrasProposicionales):
 		print u"La fórmula es satisfacible por las siguientes interpretaciones: "
 
 		# Interpreta como string la lista de interpretaciones
-        INTS = []
-        for i in interpretaciones:
+		INTS = []
+		for i in interpretaciones:
 			aux = [T.Inorder(l) for l in i]
-            INTS.append(aux)
+			INTS.append(aux)
 			print aux
+
 		return "Satisfacible", INTS
 	else:
 		print(u"La lista de fórmulas dada es insatisfacible!")
