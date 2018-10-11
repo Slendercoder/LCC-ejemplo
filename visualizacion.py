@@ -101,5 +101,5 @@ def dibujar_tablero(f, n):
     except OSError:
         if not os.path.isdir(d):
             raise
-    fig.savefig("/Imagenes/tablero_" + str(n) + ".png")
+    fig.savefig(d + "/tablero_" + str(n) + ".png")
     print "Imagenes creadas! Verificar " + d
