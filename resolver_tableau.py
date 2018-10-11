@@ -69,8 +69,9 @@ if OK == 'Satisfacible':
         import csv
         archivo = 'tableros_automatico.csv'
         with open(archivo, 'w') as output:
-        writer = csv.writer(output, lineterminator='\n')
-        writer.writerows(interpretaciones)
+            writer = csv.writer(output, lineterminator='\n')
+            writer.writerows(interpretaciones)
+
         print "Interpretaciones guardadas  en " + archivo
 
         import visualizacion as V
