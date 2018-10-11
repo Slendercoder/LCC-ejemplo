@@ -66,8 +66,13 @@ interpretaciones = [] # lista de lista de literales que hacen verdadera lista_ho
 
 OK, INTS = T.Tableaux(lista_hojas, letrasProposicionales)
 
+print "Tableau terminado!"
+# Guardo el tiempo al terminar el procedimiento
+end = timer()
+print u"El procedimiento demoró: ", end - start
+
 if OK == 'Satisfacible':
-    if len(interpretaciones) == 0:
+    if len(INTS) == 0:
         print u"Error: la lista de interpretaciones está vacía"
     else:
         print "Guardando interpretaciones en archivo..."
@@ -84,7 +89,4 @@ if OK == 'Satisfacible':
         for i in interpretaciones:
             V.dibujar_tablero(i,contador)
 
-print "Proceso terminado!"
-# Guardo el tiempo al terminar el procedimiento
-end = timer()
-print u"El procedimiento demoró: ", end - start
+print "FIN"
