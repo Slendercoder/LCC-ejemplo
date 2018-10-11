@@ -233,7 +233,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 				# lista_hojas.append('o') # Marca la hoja como consistente con una 'o'
 
 	# Dice si la raiz es inconsistente
-	if 'o' in lista_hojas:
+	if len(interpretaciones) == 0:
 		print u"La fórmula es satisfacible por las siguientes interpretaciones: "
 		# Imprime las interpretaciones que satisfacen
 		for i in interpretaciones:

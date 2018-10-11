@@ -3,8 +3,13 @@
 # Edgar Andrade, 2018
 # Codigo para crear la formula del problema de los caballos
 
-print "Importando tableaux"
+print "Importando paquetes..."
+from timeit import default_timer as timer
 import Tableaux as T
+print "Importados!"
+
+# Guardo el tiempo al comenzar el procedimiento
+start = timer()
 
 # Regla 1: Debe haber exactamente tres caballos
 
@@ -52,7 +57,7 @@ conjunciones = '4-2-Y9>' + conjunciones + 'Y'
 # Creo la formula como objeto
 
 A = T.StringtoTree(conjunciones, letrasProposicionales)
-# print "Formula: ", T.Inorder(A)
+print "Formula: ", T.Inorder(A)
 
 lista_hojas = [[A]] # Inicializa la lista de hojas
 
@@ -80,3 +85,6 @@ if OK == 'Satisfacible':
             V.dibujar_tablero(i,contador)
 
 print "Proceso terminado!"
+# Guardo el tiempo al terminar el procedimiento
+end = timer()
+print u"El procedimiento demoró: ", end - start
