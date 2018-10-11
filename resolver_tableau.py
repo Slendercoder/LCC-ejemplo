@@ -5,6 +5,7 @@
 
 print "Importando paquetes..."
 from timeit import default_timer as timer
+import os
 import Tableaux as T
 print "Importados!"
 
