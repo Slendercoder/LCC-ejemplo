@@ -46,14 +46,14 @@ for p in letrasProposicionales:
 
 # Regla 2: Ningun caballo debe poder atacar a otro
 
-# conjunciones = '8-6-Y1>' + conjunciones + 'Y'
-# conjunciones = '9-7-Y2>' + conjunciones + 'Y'
-# conjunciones = '8-4-Y3>' + conjunciones + 'Y'
-# conjunciones = '9-3-Y4>' + conjunciones + 'Y'
-# conjunciones = '7-1-Y6>' + conjunciones + 'Y'
-# conjunciones = '6-2-Y7>' + conjunciones + 'Y'
-# conjunciones = '3-1-Y8>' + conjunciones + 'Y'
-# conjunciones = '4-2-Y9>' + conjunciones + 'Y'
+conjunciones = '8-6-Y1>' + conjunciones + 'Y'
+conjunciones = '9-7-Y2>' + conjunciones + 'Y'
+conjunciones = '8-4-Y3>' + conjunciones + 'Y'
+conjunciones = '9-3-Y4>' + conjunciones + 'Y'
+conjunciones = '7-1-Y6>' + conjunciones + 'Y'
+conjunciones = '6-2-Y7>' + conjunciones + 'Y'
+conjunciones = '3-1-Y8>' + conjunciones + 'Y'
+conjunciones = '4-2-Y9>' + conjunciones + 'Y'
 
 # Creo la formula como objeto
 
