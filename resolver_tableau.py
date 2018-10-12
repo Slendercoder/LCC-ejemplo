@@ -21,6 +21,7 @@ for i in range(1, 10):
 
 # print "Letras proposicionales: ", letrasProposicionales
 
+# Regla 1: Debe haber exactamente tres caballos
 conjunciones = '' # Para ir guardando las conjunciones de trios de disyunciones de literales
 inicial = True # Para inicializar la primera conjuncion
 
@@ -46,14 +47,14 @@ for p in letrasProposicionales:
 
 # Regla 2: Ningun caballo debe poder atacar a otro
 
-conjunciones = '8-6-Y1>' + conjunciones + 'Y'
-conjunciones = '9-7-Y2>' + conjunciones + 'Y'
-conjunciones = '8-4-Y3>' + conjunciones + 'Y'
-conjunciones = '9-3-Y4>' + conjunciones + 'Y'
-conjunciones = '7-1-Y6>' + conjunciones + 'Y'
-conjunciones = '6-2-Y7>' + conjunciones + 'Y'
-conjunciones = '3-1-Y8>' + conjunciones + 'Y'
-conjunciones = '4-2-Y9>' + conjunciones + 'Y'
+# conjunciones = '8-6-Y1>' + conjunciones + 'Y'
+# conjunciones = '9-7-Y2>' + conjunciones + 'Y'
+# conjunciones = '8-4-Y3>' + conjunciones + 'Y'
+# conjunciones = '9-3-Y4>' + conjunciones + 'Y'
+# conjunciones = '7-1-Y6>' + conjunciones + 'Y'
+# conjunciones = '6-2-Y7>' + conjunciones + 'Y'
+# conjunciones = '3-1-Y8>' + conjunciones + 'Y'
+# conjunciones = '4-2-Y9>' + conjunciones + 'Y'
 
 # Creo la formula como objeto
 
@@ -76,6 +77,11 @@ if OK == 'Satisfacible':
     if len(INTS) == 0:
         print u"Error: la lista de interpretaciones está vacía"
     else:
+        # Eliminamos repeticiones dentro de cada interpretacion
+        INTS = [list(set(i)) for i in INTS]
+        # Eliminamos interpretaciones repetidas
+        INTS_set = set(tuple(x) for x in INTS)
+        INTS = [list(x) for x in INTS_set]
         print "Guardando interpretaciones en archivo..."
         import csv
         archivo = 'tableros_automatico.csv'
