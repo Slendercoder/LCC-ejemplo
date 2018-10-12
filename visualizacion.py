@@ -12,6 +12,8 @@
 
 # Salida: archivo tablero_%i.png, donde %i es un numero natural
 
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage

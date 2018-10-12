@@ -85,7 +85,7 @@ def dibujar_tablero(f, n):
     direcciones[9] = [0.835, 0.165]
 
     for l in f:
-        if '~' not in l:
+        if '-' not in l:
             ab = AnnotationBbox(imagebox, direcciones[int(l)], frameon=False)
             axes.add_artist(ab)
 
@@ -96,6 +96,8 @@ def dibujar_tablero(f, n):
 #################
 # importando paquetes para dibujar
 print "Importando paquetes..."
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
