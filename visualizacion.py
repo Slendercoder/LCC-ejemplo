@@ -15,7 +15,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
-
+import os
 
 def dibujar_tablero(f, n):
     # Visualiza un tablero dada una formula f
@@ -73,7 +73,7 @@ def dibujar_tablero(f, n):
 
     # Cargando imagen de caballo
     arr_img = plt.imread("caballo.png", format='png')
-    imagebox = OffsetImage(arr_img, zoom=0.5)
+    imagebox = OffsetImage(arr_img, zoom=0.185)
     imagebox.image.axes = axes
 
     # Creando las direcciones en la imagen de acuerdo a literal
@@ -94,12 +94,12 @@ def dibujar_tablero(f, n):
             axes.add_artist(ab)
 
     # plt.show()
-    d = '/Soluciones'
+    d = 'Soluciones/'
     try:
         os.makedirs(d)
         print "Creando " + d
     except OSError:
         if not os.path.isdir(d):
             raise
-    fig.savefig(d + "/tablero_" + str(n) + ".png")
-    print "Imagenes creadas! Verificar " + d
+    fig.savefig(d + "tablero_" + str(n) + ".png")
+    print "Imagenes creadas! Verificar la carpeta " + d

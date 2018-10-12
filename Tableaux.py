@@ -129,7 +129,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 
 		if formulas_no_literales != []: # Verifica si hay formulas que no son literales
 			# Hay formulas que no son literales
-			# print "Hay formulas que no son literales"
+			print "Hay formulas que no son literales"
 			# Selecciona una formula no literal
 			f = choice(formulas_no_literales)
 			if f.label == 'Y':
@@ -169,36 +169,36 @@ def Tableaux(lista_hojas, letrasProposicionales):
 				if f.right.label == '-':
 					# print u"Fórmula 1alfa" # Identifica la formula como no no A1
 					hoja.remove(f) # Quita a f de la hoja
-					A1 = f.rigth.right
+					A1 = f.right.right
 					if A1 not in hoja:
 						hoja.append(A1) # Agrega la formula sin doble negacion
 				elif f.right.label == 'O':
 					# print u"Fórmula 3alfa" # Identifica la formula como no(A1 o A2)
 					hoja.remove(f) # Quita a f de la hoja
-					noA1 = Tree('-', None, f.left)
+					noA1 = Tree('-', None, f.right.left)
 					if noA1 not in hoja:
 						hoja.append(noA1) # Agrega no A1
-					noA2 = Tree('-', None, f.right)
+					noA2 = Tree('-', None, f.right.right)
 					if noA2 not in hoja:
 						hoja.append(noA2) # Agrega no A2
 				elif f.right.label == '>':
 					# print u"Fórmula 4alfa" # Identifica la formula como no(A1 > A2)
 					hoja.remove(f) # Quita a f de la hoja
-					A1 = f.left
+					A1 = f.right.left
 					if A1 not in hoja:
 						hoja.append(A1) # Agrega A1
-					noA2 = Tree('-', None, f.right)
+					noA2 = Tree('-', None, f.right.left)
 					if noA2 not in hoja:
 						hoja.append(noA2) # Agrega no A2
 				elif f.right.label == 'Y':
 					# print u"Fórmula 1beta" # Identifica la formula como no(B1 y B2)
 					hoja.remove(f) # Quita la formula de la hoja
 					lista_hojas.remove(hoja) # Quita la hoja de la lista de hojas
-					noB1 = Tree('-', None, f.left)
+					noB1 = Tree('-', None, f.right.left)
 					if  noB1 not in hoja:
 						S1 = [x for x in hoja] + [noB1] # Crea nueva hoja con no B1
 					lista_hojas.append(S1) # Agrega nueva hoja con no B2
-					noB2 = Tree('-', None, f.right)
+					noB2 = Tree('-', None, f.right.right)
 					if  noB2 not in hoja:
 						S2 = [x for x in hoja] + noB2 # Crea nueva hoja con no B2
 					lista_hojas.append(S2) # Agrega nueva hoja con no B2

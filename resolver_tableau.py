@@ -5,7 +5,6 @@
 
 print "Importando paquetes..."
 from timeit import default_timer as timer
-import os
 import Tableaux as T
 print "Importados!"
 
@@ -93,7 +92,9 @@ if OK == 'Satisfacible':
 
         import visualizacion as V
         contador = 1
-        for i in interpretaciones:
+        for i in INTS:
+            print "Trabajando con literales: ", i
             V.dibujar_tablero(i,contador)
+            contador += 1
 
 print "FIN"
