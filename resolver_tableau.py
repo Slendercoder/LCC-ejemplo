@@ -76,11 +76,6 @@ if OK == 'Satisfacible':
     if len(INTS) == 0:
         print u"Error: la lista de interpretaciones está vacía"
     else:
-        # Eliminamos repeticiones dentro de cada interpretacion
-        INTS = [list(set(i)) for i in INTS]
-        # Eliminamos interpretaciones repetidas
-        INTS_set = set(tuple(x) for x in INTS)
-        INTS = [list(x) for x in INTS_set]
         print "Guardando interpretaciones en archivo..."
         import csv
         archivo = 'tableros_automatico.csv'
