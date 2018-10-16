@@ -187,7 +187,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 					A1 = f.right.left
 					if A1 not in hoja:
 						hoja.append(A1) # Agrega A1
-					noA2 = Tree('-', None, f.right.left)
+					noA2 = Tree('-', None, f.right.right)
 					if noA2 not in hoja:
 						hoja.append(noA2) # Agrega no A2
 				elif f.right.label == 'Y':
@@ -200,7 +200,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 					lista_hojas.append(S1) # Agrega nueva hoja con no B2
 					noB2 = Tree('-', None, f.right.right)
 					if  noB2 not in hoja:
-						S2 = [x for x in hoja] + noB2 # Crea nueva hoja con no B2
+						S2 = [x for x in hoja] + [noB2] # Crea nueva hoja con no B2
 					lista_hojas.append(S2) # Agrega nueva hoja con no B2
 
 		else: # No hay formulas que no sean literales
@@ -243,7 +243,7 @@ def Tableaux(lista_hojas, letrasProposicionales):
 			aux = [Inorder(l) for l in i]
 			INTS.append(aux)
 			print aux
-			
+
 		# Eliminamos repeticiones dentro de cada interpretacion
 		INTS = [list(set(i)) for i in INTS]
 		# Eliminamos interpretaciones repetidas
