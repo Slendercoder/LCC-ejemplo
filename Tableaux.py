@@ -24,6 +24,26 @@ def Inorder(f):
 	else:
 		return "(" + Inorder(f.left) + f.label + Inorder(f.right) + ")"
 
+def cadenaAlista(f, conectivos):
+	f = list(f)
+	cadena=[]
+	word=""
+	cont=0
+	for j in f:
+		print "j: ", j
+		if j!=" " and j not in conectivos:
+			word=word+j
+			print "word: ", word
+		if j==" " or cont==len(f)-1:
+			cadena.append(word)
+			word=""
+		if j in conectivos:
+			cadena.append(word)
+			cadena.append(j)
+			word=""
+			cont=cont+1
+	return cadena
+
 def StringtoTree(A, letrasProposicionales):
     # Crea una formula como tree dada una formula como cadena escrita en notacion polaca inversa
     # Input: A, lista de caracteres con una formula escrita en notacion polaca inversa
